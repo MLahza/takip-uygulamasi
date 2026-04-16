@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mola Takip | Çalışan Yönetimi</title>
+    <meta name="description" content="Çalışan mola takibi ve 45 dakikalık sayaç yönetim uygulaması.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app" class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+
+                <h1>Mola Takip Uygulaması </h1>
+                <p id="current-date"></p>
+            </div>
+            <button id="add-employee-trigger" class="btn-circle btn-primary" title="Çalışan Ekle">
+                <i data-lucide="plus"></i>
+            </button>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="app-main">
+            <!-- Active Breaks / Employee List Section -->
+            <section id="view-active" class="view active">
+                <div class="section-header">
+                    <h2>Mola Paneli</h2>
+                </div>
+                <div id="employee-list" class="list-container">
+                    <!-- Employee cards will be injected here -->
+                    <div class="empty-state">
+                        <i data-lucide="users"></i>
+                        <p>Henüz çalışan eklenmemiş.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Finished Breaks Section -->
+            <section id="view-finished" class="view">
+                <div class="section-header">
+                    <h2>Mola Sonu Listesi</h2>
+                </div>
+                <div id="finished-list" class="list-container">
+                    <!-- Finished items will be injected here -->
+                    <div class="empty-state">
+                        <i data-lucide="check-circle"></i>
+                        <p>Henüz süresi dolan eleman yok.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal (Add/Edit Employee) -->
+        <div id="employee-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Çalışan Ekle</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <form id="employee-form" class="modal-body">
+                    <input type="hidden" id="employee-id">
+                    <div class="form-group">
+                        <label for="employee-name">İsim Soyisim</label>
+                        <input type="text" id="employee-name" placeholder="Örn: Ahmet Yılmaz" required
+                            autocomplete="off">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary modal-close">İptal</button>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-view="active">
+                <i data-lucide="timer"></i>
+                <span>Aktif Paneli</span>
+            </button>
+            <button class="nav-item" data-view="finished">
+                <i data-lucide="clipboard-check"></i>
+                <span>Mola Sonu</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification-toast" class="toast">
+        <div class="toast-content">
+            <i data-lucide="bell"></i>
+            <span id="toast-message">Mola süresi doldu!</span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
